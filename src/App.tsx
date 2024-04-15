@@ -1,7 +1,7 @@
 import React from 'react'
-import BuptImage from './src/BuptImg'
-import MySearchBar from './src/SearchBar'
-import Navigation from './src/NavigationBar'
+import BuptImage from './components/BuptImg'
+import MySearchBar from './components/SearchBar'
+import Navigation from './screens/NavigationBar'
 import { View, StyleSheet } from 'react-native'
 
 function App() {

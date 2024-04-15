@@ -3,7 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons'; // 确保这样导入Icon
 import MapScreen from './Map';
-import BuptImage from './BuptImg';
+import BuptImage from '../components/BuptImg';
 
 
 const Tab = createBottomTabNavigator();
