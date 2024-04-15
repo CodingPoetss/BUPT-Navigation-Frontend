@@ -1,14 +1,16 @@
 # 好用的库
-## 组件
+## 组件库
 - KeyboardAvoidingView 本组件可以自动根据键盘的高度，调整自身的 height 或底部的 padding，以避免被遮挡。
 - https://reactnativeelements.com/docs/components/searchbar
 ## 图标
 - https://ionic.io/ionicons
+## 地图服务及其配置
+- https://github.com/qiuxiang/react-native-amap3d
+- https://yangandmore.github.io/2020/03/06/React-native-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/
 ---
 
 # 从这几个网站把相应的包下下来
 `https://reactnativeelements.com/docs/installation`
-
 
 
 

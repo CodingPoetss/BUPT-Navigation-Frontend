@@ -7,10 +7,12 @@ function MySearchBar() {
 
     const handleSearch = () => {
         // 使用Alert显示搜索内容
-        Alert.alert("搜索内容", `你正在搜索: ${search}`, [
-            { text: "OK" }, { text: "cancel" }
-        ]);
-        setSearch('');
+        if (search != "") {
+            Alert.alert("搜索内容", `你正在搜索: ${search}`, [
+                { text: "OK" }, { text: "cancel" }
+            ]);
+            setSearch('');
+        };
     };
 
     return (

@@ -1,18 +1,45 @@
-import React from 'react';
-import { View, Text } from 'react-native';
-import MapView from 'react-native-maps';
+import React from 'react'
+import { Platform } from "react-native";
+import { MapView, MapType, Marker, AMapSdk } from "react-native-amap3d";
 
-function MapScreen() {
+AMapSdk.init(
+    Platform.select({
+        android: "9a98ea6bf92cfb03da8544fafe1b13e9",
+        ios: "",
+    })
+);
+
+function Map() {
     return (
-        // <MapView style={{ flex: 1 }} initialRegion={{
-        //     latitude: 37.78825,
-        //     longitude: -122.4324,
-        //     latitudeDelta: 0.0922,
-        //     longitudeDelta: 0.0421,
-        // }} />
-        <View>
-        </View>
-    );
+        <MapView
+            style={{ flex: 1 }}
+            mapType={MapType.Standard}
+            initialCameraPosition={{
+                target: {
+                    latitude: 39.91095,
+                    longitude: 116.37296,
+                },
+                zoom: 12,
+            }}
+
+
+        >
+
+            <Marker
+                position={{ latitude: 39.806901, longitude: 116.297972 }}
+                icon={{
+                    uri: "https://reactnative.dev/img/pwa/manifest-icon-512.png",
+                    width: 64,
+                    height: 64,
+                }}
+            />
+            <Marker position={{ latitude: 39.906901, longitude: 116.397972 }}>
+
+            </Marker>
+
+        </MapView>
+    )
+
 }
 
-export default MapScreen;
+export default Map

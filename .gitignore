@@ -1,0 +1,73 @@
+# macOS 系统文件
+.DS_Store
+
+# Xcode 项目文件
+build/
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+ios/.xcode.env.local
+
+# Android/IntelliJ
+build/
+.idea
+.gradle
+local.properties
+*.iml
+*.hprof
+.cxx/
+*.keystore
+!debug.keystore
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# fastlane
+**/fastlane/report.xml
+**/fastlane/Preview.html
+**/fastlane/screenshots
+**/fastlane/test_output
+
+# 打包的JavaScript文件
+*.jsbundle
+
+# Ruby / CocoaPods
+/ios/Pods/
+/vendor/bundle/
+
+# Metro 临时文件
+.metro-health-check*
+
+# 测试覆盖率
+/coverage
+
+# 忽略根目录下的所有文件和文件夹
+*
+
+# 不忽略以下文件和文件夹
+# 要同时保留该目录和其目录下的文件
+!src/     
+!src/**/*
+!assets/
+!assets/**/*
+!package.json
+!package-lock.json
+!README.md
+!app.tsx
+!index.js
+!.gitignore
+!app.json
