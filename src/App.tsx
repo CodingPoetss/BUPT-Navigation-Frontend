@@ -7,7 +7,6 @@ import { View, StyleSheet } from 'react-native'
 function App() {
   return (
     <View style={styles.container}>
-      <MySearchBar />
       <Navigation />
     </View>
 

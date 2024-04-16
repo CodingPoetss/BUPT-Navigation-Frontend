@@ -1,37 +1,47 @@
 import React, { useState } from 'react';
-import { SearchBar } from 'react-native-elements';
-import { Alert } from 'react-native';
+import { Icon, SearchBar } from 'react-native-elements';
+import { Alert, StyleSheet } from 'react-native';
 
-function MySearchBar() {
-    const [search, setSearch] = useState('');
+function MySearchBar({ markers, setMarkers }) {
+    const [searchQuery, setSearchQuery] = useState('');
 
     const handleSearch = () => {
-        // 使用Alert显示搜索内容
-        if (search != "") {
-            Alert.alert("搜索内容", `你正在搜索: ${search}`, [
-                { text: "OK" }, { text: "cancel" }
-            ]);
-            setSearch('');
+        if (searchQuery != "") {
+            const filteredMarkers = markers.filter(marker =>
+                marker.title.toLowerCase().includes(searchQuery.toLowerCase()) || marker.category.toLowerCase() === searchQuery.toLowerCase()
+            );
+            setMarkers(filteredMarkers);
+            Alert.alert("搜索结果", `找到${filteredMarkers.length}个结果。`);
+            setSearchQuery('');
         };
     };
 
     return (
         <SearchBar
-            placeholder="Type Here..."
-            onChangeText={setSearch}
-            value={search}
-            onSubmitEditing={handleSearch} // 当用户在键盘上点击“搜索”时，会触发handleSearch函数
-            searchIcon={{ type: 'font-awesome', name: 'search' }} // 使用FontAwesome的搜索图标
-            containerStyle={{
-                backgroundColor: 'transparent',
-                borderBottomColor: 'transparent',
-                borderTopColor: 'transparent',
-            }}
-            inputContainerStyle={{
-                backgroundColor: '#e0e0e0' // 设置搜索输入框的背景色
-            }}
+            placeholder="请输入地点或者分类"
+            onChangeText={setSearchQuery}
+            value={searchQuery}
+            onSubmitEditing={handleSearch}
+            searchIcon={<Icon name='search' color='#007aff' />} // 使用FontAwesome的搜索图标
+            containerStyle={styles.container}
+            inputContainerStyle={styles.inputContainer}
         />
     );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: 'transparent',
+        borderBottomColor: 'transparent',
+        borderTopColor: 'transparent',
+        paddingHorizontal: 10,
+        paddingTop: 10,
+    },
+    inputContainer: {
+        backgroundColor: '#e0e0e0',
+        borderRadius: 30, // 增加圆角
+        height: 50, // 设置高度
+    }
+});
 
 export default MySearchBar;

@@ -4,6 +4,34 @@
 - https://reactnativeelements.com/docs/components/searchbar
 ## 图标
 - https://ionic.io/ionicons
+- https://github.com/oblador/react-native-vector-icons?tab=readme-ov-file
+
+
+```gradle
+// 这是一个大坑，请不要限定加入指定的字符集，全加入
+apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+project.ext.vectoricons = [
+    iconFontNames: [ 'MaterialIcons.ttf', 'EvilIcons.ttf' ] // Specify font files
+]
+```
+
+```jsx
+// 使用方法
+import { Icon } from 'react-native-elements';
+<Icon name='map' type='ionicon' clo/>
+```
+- **`'material'`** - 来自 Google 的 Material Icons
+- **`'material-community'`** - 来自 Material Community Icons
+- **`'font-awesome'`** - 来自 FontAwesome
+- **`'octicon'`** - 来自 GitHub 的 Octicons
+- **`'ionicon'`** - 来自 Ionicons（您已尝试，但有问题）
+- **`'foundation'`** - 来自 ZURB Foundation Icons
+- **`'evilicon'`** - 来自 Evil Icons
+- **`'simple-line-icon'`** - 来自 Simple Line Icons
+- **`'zocial'`** - 来自 Zocial Icons
+- **`'entypo'`** - 来自 Entypo Icons
+- **`'feather'`** - 来自 Feather Icons
+
 ## 地图服务及其配置
 - https://github.com/qiuxiang/react-native-amap3d
 - https://yangandmore.github.io/2020/03/06/React-native-%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/
@@ -20,6 +48,10 @@ emulator -list-avds
 #启动虚拟设备
 emulator -avd Google_Phone
 emulator -avd <avd_name>
+```
+## 真机调试
+```bash
+adb devices
 ```
 ## 构建项目
 
