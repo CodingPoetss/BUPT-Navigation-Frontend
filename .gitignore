@@ -56,18 +56,46 @@ yarn-error.log
 /coverage
 
 # 忽略根目录下的所有文件和文件夹
-*
+# *
 
 # 不忽略以下文件和文件夹
 # 要同时保留该目录和其目录下的文件
-!src/     
-!src/**/*
-!assets/
-!assets/**/*
-!package.json
-!package-lock.json
-!README.md
-!app.tsx
-!index.js
-!.gitignore
-!app.json
+# !src/     
+# !src/**/*
+# !assets/
+# !assets/**/*
+# !package.json
+# !package-lock.json
+# !README.md
+# !app.tsx
+# !index.js
+# !.gitignore
+# !app.json
+
+# Node dependencies
+node_modules/
+
+# Android specific
+android/.gradle
+android/build
+android/app/build
+
+# Temporary files
+*.log
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/Editor files
+.idea/
+.vscode/
+*.iml
+*.swp
+
+ios/
+
+.bundle
+__tests__
+

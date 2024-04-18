@@ -123,6 +123,63 @@ my-app/
 
 这样的结构有助于保持项目的清晰和模块化，使得维护和开发工作变得更加容易。
 
+---
+# 打包构建APK
+在您提供的 `build.gradle` 配置中，如果您想要在开发和调试时使用不同的签名配置，可以同时启用 `debug` 和 `release` 的签名配置。这样做可以让两个版本共存，根据您构建的类型（调试或发布）自动选择相应的签名配置。
+
+### 为什么使用不同的签名配置？
+
+**Debug 配置**：默认的调试配置使用了 Android 的 `debug.keystore`，它是为了快速部署和测试而设置的。这个 keystore 不应用于生产环境，因为它的安全性较低（密码和别名通常都是预设的`android`）。
+
+**Release 配置**：发布配置应使用您自己创建的 keystore，这提高了应用的安全性。发布用的 keystore 保护了应用的完整性，防止未授权的代码更新和版本发布。
+
+### 同时启用 Debug 和 Release 配置
+
+您可以按以下方式配置 `build.gradle`，以同时支持调试和发布的签名：
+
+```groovy
+android {
+    ...
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        },
+        release {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE')) {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+        release {
+            signingConfig signingConfigs.release
+            minifyEnabled enableProguardInReleaseBuilds
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+}
+```
+
+### 注意事项
+
+1. **解除注释**：您提供的代码中 `debug` 配置是被注释掉的。如果您想使用它，需要解除注释。
+2. **路径和密码**：确保 `debug.keystore` 存在于正确的路径下，通常位于 `android/app` 目录。如果不确定，可以从 Android SDK 的默认位置复制一个过来（通常在 `~/.android/` 目录下）。
+3. **切换构建类型**：在运行或打包应用时，可以选择构建类型：
+   - 对于调试构建，使用命令 `./gradlew assembleDebug` 或在 Android Studio 中选择 `debug` 构建变体。
+   - 对于发布构建，使用命令 `./gradlew assembleRelease`。
+
+通过这种设置，您可以轻松地切换调试和发布环境，而不需要频繁修改配置文件。这样既保证了开发的便利性，也确保了应用发布的安全性。
+
 
 
 ---
