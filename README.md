@@ -5,6 +5,7 @@
 ## 图标
 - https://ionic.io/ionicons
 - https://github.com/oblador/react-native-vector-icons?tab=readme-ov-file
+- https://www.flaticon.com/search?word=map
 
 
 ```gradle
@@ -51,6 +52,7 @@ emulator -avd <avd_name>
 ```
 ## 真机调试
 ```bash
+# 下述指令可以查看是否成功连接，随后开启开发者模式之后即可直接npm start
 adb devices
 ```
 ## 构建项目

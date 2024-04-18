@@ -2,9 +2,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Icon } from 'react-native-elements';
-import MapScreen from './Map';
+import InteractionMap from './InteractionMap';
+import SearchMap from './SearchMap'
 import BuptImage from '../components/BuptImg';
 import ScenicMapLogger from './LoggerMap';
+import ProfileScreen from './profile';
 
 
 const Tab = createBottomTabNavigator();
@@ -35,9 +37,9 @@ function MyTabs() {
                     tabBarActiveTintColor: '#007bff', // 设置选中项的颜色
                     tabBarInactiveTintColor: '#8e8e93', // 设置未选中项的颜色
                 })}>
-                <Tab.Screen name="地图" component={MapScreen} />
-                <Tab.Screen name="发现" component={BuptImage} />
-                <Tab.Screen name="我的" component={BuptImage} />
+                <Tab.Screen name="地图" component={InteractionMap} />
+                <Tab.Screen name="发现" component={SearchMap} />
+                <Tab.Screen name="我的" component={ProfileScreen} />
             </Tab.Navigator>
         </NavigationContainer>
     );
