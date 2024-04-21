@@ -36,6 +36,12 @@ import { Icon } from 'react-native-elements';
 如果你在模拟器上运行应用：使用特定的IP地址而不是localhost。对于iOS模拟器，通常可以使用http://127.0.0.1:5000。而对于Android模拟器，则需要使用特定的IP地址http://10.0.2.2:5000，这是Android模拟器访问本地开发机的标准方式。
 如果你在物理设备上运行应用：你需要使用你电脑的局域网IP地址（例如，http://192.168.1.4:5000）。确保你的手机和电脑在同一局域网内。
 
+### 构建apk时不能联网的问题
+在`android\app\src\main\AndroidManifest.xml`中加入下面这一行
+```
+android:usesCleartextTraffic="true"
+```
+
 ### 图标字符集的指定
 ```gradle
 // 这是一个大坑，请不要限定加入指定的字符集，全加入
